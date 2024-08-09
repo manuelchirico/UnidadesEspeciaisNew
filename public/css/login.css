@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Cor de fundo para a página */
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.8); /* Fundo branco com transparência */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center; /* Centraliza o conteúdo */
+}
+
+.login-container img {
+    width: 40%; /* Ajusta a largura da imagem para caber na div */
+    height: auto;
+    border-radius: 8px; /* Adiciona bordas arredondadas à imagem */
+    margin-bottom: 20px; /* Espaço abaixo da imagem */
+}
+
+.login-form {
+    margin: 0 auto; /* Centraliza a div de formulário */
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: calc(100% - 16px); /* Ajusta a largura dos inputs com base no padding da div */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura total */
+}
+
+button {
+    width: calc(100% - 16px); /* Ajusta a largura do botão com base no padding da div */
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura total */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
