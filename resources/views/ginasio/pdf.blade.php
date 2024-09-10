@@ -46,10 +46,9 @@
 </head>
 <body>
     <div class="header">
-    <img src="{{ url('unilicungo/up.png') }}" alt="Logo">
-    <h2>Universidadde licungo -<h1>extensão Beira </h1></h2>
-        <h3>Departamento de Unidade Especiais</h3>
-        <h3>Departamento de Aluguer de Ginásio</h3>
+    <h1>Universidade Licungo - Extensão Beira</h1>
+    <h1>Departamento de Unidades Especiais</h1>
+        <h2>Departamento de Aluguer de Ginásio</h2>
         <h3>Eventos @if($month) de {{ date('m/Y', strtotime($month)) }} @endif</h3>
     </div>
     
@@ -87,5 +86,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="footer" style="text-align: center; margin-top: 40px;">
+    <p>Beira, aos {{ date('d') }} de {{ date('F') }} de {{ date('Y') }}
+    Impresso às {{ date('H:i') }}</p>
+</div>
 </body>
 </html>

@@ -23,7 +23,6 @@
 </head>
 <body>
     <div class="header">
-        <img src="{{ public_path('unilicungo/up.png') }}" alt="Logo">
         <h1>Universidadde licungo-extensão Beira </h1>
         <h1>Departamento de Unidade Especiais</h1>
         <h2>Relatório de Reservas</h2>
@@ -59,6 +58,9 @@
         @endforeach
     </tbody>
 </table>
-
+<div class="footer" style="text-align: center; margin-top: 40px;">
+    <p>Beira, aos {{ date('d') }} de {{ date('F') }} de {{ date('Y') }}
+    Impresso às {{ date('H:i') }}</p>
+</div>
 </body>
 </html>

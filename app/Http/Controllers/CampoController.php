@@ -122,9 +122,10 @@ class CampoController extends Controller
     public function generatePDF(Request $request)
     {
         ini_set('max_execution_time', 120); // Aumenta o tempo máximo de execução
-    
+        
         $month = $request->input('month');
         
+        // Limita a quantidade de registros a serem processados (Ex: 1000)
         $query = Campo::query();
         
         if ($month) {
@@ -132,7 +133,8 @@ class CampoController extends Controller
                   ->whereYear('data_evento', '=', date('Y', strtotime($month)));
         }
         
-        $campos = $query->get();
+        // Adiciona limite de registros para evitar sobrecarga
+        $campos = $query->limit(1000)->get();
         
         // Gera o HTML a partir da view
         $html = view('campos.pdf', compact('campos', 'month'))->render();
@@ -142,6 +144,11 @@ class CampoController extends Controller
         $options->set('defaultFont', 'Arial');
         $options->set('isHtml5ParserEnabled', true);
         $options->set('isRemoteEnabled', true);
+        
+        // Otimiza o cache e a renderização
+        $options->set('isPhpEnabled', true); // Permite PHP para otimização de cache
+        $options->set('debugPng', false); // Desativa depuração de PNG
+        $options->set('debugKeepTemp', false); // Não mantém arquivos temporários
         
         // Inicializa o Dompdf com as opções
         $dompdf = new Dompdf($options);
@@ -153,9 +160,10 @@ class CampoController extends Controller
         // Renderiza o PDF
         $dompdf->render();
         
-        // Retorna o PDF para download
-        return $dompdf->stream('relatorio_campos.pdf');
+        // Retorna o PDF para download (com menos sobrecarga de download)
+        return $dompdf->stream('relatorio_campos.pdf', ['Attachment' => false]); // Exibe sem forçar download imediato
     }
+    
 
     public function create()
     {

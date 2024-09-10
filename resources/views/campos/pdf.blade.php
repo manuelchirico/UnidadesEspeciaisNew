@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eventos: Campos </title>
+    <title>Eventos: Campos</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
+            margin: 40px;
         }
         table {
             width: 100%;
@@ -13,37 +14,40 @@
             margin-top: 20px;
         }
         th, td {
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #dee2e6;
             text-align: right;
         }
         th {
             background-color: #f8f9fa;
+            color: #343a40;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
         .header {
             text-align: center;
             margin-bottom: 20px;
         }
-      
-        .header h1, .header h2 {
-            margin: 5px 0;
+        .header img {
+            width: 100px;
         }
-        .header h1 {
-            font-weight: bold;
+        .footer {
+            margin-top: 40px;
+            text-align: right;
         }
-        .header {
-        text-align: center;
-    }
     </style>
+    
 </head>
 <body>
-    <div class="header">
-        <img src="{{ asset('unilicungo/up.png') }}" alt="Logo">
-        <h1>Universidadde licungo -<h1>extensão Beira </h1></h1>
-        <h1>Departamento de Unidade Especiais</h1>
-        <h2>Relatorio de Aluguer de Campo-Beira</h2>
-        <h3>Eventos @if($month) de {{ date('m/Y', strtotime($month)) }} @endif</h3>
-    </div>
+<div class="header">
+    <h1>Universidade Licungo - Extensão Beira</h1>
+    <h1>Departamento de Unidades Especiais</h1>
+    <h2>Relatório de Aluguer de Campo - Beira</h2>
+    <h3>Eventos @if($month) de {{ date('m/Y', strtotime($month)) }} @endif</h3>
+</div>
+
     
     <table>
         <thead>
@@ -73,5 +77,11 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="footer" style="text-align: center; margin-top: 40px;">
+    <p>Beira, aos {{ date('d') }} de {{ date('F') }} de {{ date('Y') }}
+    Impresso às {{ date('H:i') }}</p>
+</div>
+
 </body>
 </html>
