@@ -14,30 +14,27 @@
     <!-- Custom fonts for this template-->
     <link href=" {{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <!-- Fontes e estilos personalizados -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap CSS local -->
+<link href="{{ asset('vendor/bootstrap/scss/bootstrap.min.css') }}" rel="stylesheet">
 
-<!-- Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- CSS do Bootstrap -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-<!-- jQuery -->
+<!-- jQuery (ainda da CDN para garantir funcionamento) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- JavaScript do Bootstrap -->
+
+<!-- Bootstrap JS local -->
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Popper.js (dependência do Bootstrap) -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- FontAwesome CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- FontAwesome (CDN) -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
-
 
 </head>
 
@@ -49,140 +46,124 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard')}}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                <img src="{{ asset('unilicungo/up.png') }}" alt="Imagem de ícone" style="width: 24px; height: 24px;">
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+    </a>
+</li>
 
-                </div>
-                <div class="sidebar-brand-text mx-3">UNILICUNGO</div>
-            </a>
+<!-- Divider -->
+<hr class="sidebar-divider">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Aluguel 
+</div>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('dashboard')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+<!-- Nav Item - Ginásio -->
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('ginasio.index') }}"  data-target="#collapseUtilities">
+        <span class="menu-icon">
+        <i class="fas fa-dumbbell"></i>
+            <span>Ginásio</span>
+    </a>
+</li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+<!-- Nav Item - Campos -->
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('campos.index') }}"  data-target="#collapseUtilities">
+        <span class="menu-icon">
+        <i class="fas fa-futbol"></i>
+        
+        <span>Campos</span>
+    </a>
+</li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Aluguel 
+<!-- Nav Item - Residência -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-home"></i> 
+        <span>Residência</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Residencias:</h6>
+            <a class="collapse-item" href=" {{ route('residencia.entradas.list') }}">Entradas </a>
+            <a class="collapse-item" href="{{ route('residencia.saida.index') }}">Saídas</a>
+            <a class="collapse-item" href="#">Relatórios</a>
+        </div>
+    </div>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Usuários 
+</div>
+
+<!-- Nav Item - Usuários -->
+@if(Auth::user()->tipo === 'admin')
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-user"></i>
+            <span>Usuário</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Tela:</h6>
+                <a class="collapse-item" href=" {{ route('pessoas.index') }} ">Register</a>
+                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             </div>
+        </div>
+    </li>
+@endif
 
-            <!-- Nav Item - Pages Collapse Menu -->
-         
-          
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('ginasio.index') }}"  data-target="#collapseUtilities" >
-                <span class="menu-icon">
-                <i class="fas fa-dumbbell"></i>
-                    <span>Ginásio</span>
-              </a>
-            </li>
+<!-- Nav Item - Receitas -->
+@if(Auth::user()->tipo === 'admin')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('receita.index') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Receitas</span>
+        </a>
+    </li>
+@endif
 
+<!-- Nav Item - Relatórios -->
+@if(Auth::user()->tipo === 'admin')
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-file-alt"></i> 
+            <span>Relatórios</span>
+        </a>
+    </li>
+@endif
 
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
 
+<!-- Sidebar Message -->
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('logout') }}"  data-target="#collapseUtilities">
+        <span class="menu-icon">
+        <i class="fas fa-close"></i>
+        
+        <span>Sair</span>
+    </a>
+</li>
 
-    
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('campos.index') }}"  data-target="#collapseUtilities" >
-                <span class="menu-icon">
-                <i class="fas fa-futbol"></i>
-                
-                <span>Campos</span>
-              </a>
-            </li>
+</ul>
 
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-home"></i> 
-
-                    <span>Residência</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Residencias:</h6>
-                        <a class="collapse-item" href=" {{ route('residencia.entradas.list') }}">Entradas </a>
-                        <a class="collapse-item" href="{{ route('residencia.saida.index') }}">Saidas</a>
-                        <a class="collapse-item" href="#">Relatorios</a>
-                    </div>
-                </div>
-
-
-            </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Usuarios 
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-user"></i>
-
-                    <span>Usuário</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Tela:</h6>
-                        <a class="collapse-item" href=" {{ route('pessoas.index') }} ">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-          
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('receita.index') }} ">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Receitas</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                <i class="fas fa-file-alt"></i> 
-                    <span>Relatórios</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            
-
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('logout') }}"  data-target="#collapseUtilities" >
-                <span class="menu-icon">
-                <i class="fas fa-close"></i>
-                
-                <span>Sair</span>
-              </a>
-            </li>
-
-        </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -452,11 +433,7 @@
 
 
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- FontAwesome JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+ 
 
     @yield('scripts')
 

@@ -15,28 +15,24 @@ use Dompdf\Options;
 
 class ReceitaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-
-
-
-
-
-
-        
+        // Obtém o mês do parâmetro da requisição
+        $month = $request->input('month');
+    
         // Obtém os meses do banco de dados de reservas, ginásios e campos
         $months = Reserva::select(DB::raw("DATE_FORMAT(data_entrada, '%Y-%m') as month"))
             ->union(Ginasio::select(DB::raw("DATE_FORMAT(data_evento, '%Y-%m') as month")))
             ->union(Campo::select(DB::raw("DATE_FORMAT(data_evento, '%Y-%m') as month")))
             ->groupBy('month')
             ->pluck('month');
-
+    
         // Inicializa um array para armazenar os dados
         foreach ($months as $month) {
             $reserva = Reserva::where(DB::raw("DATE_FORMAT(data_entrada, '%Y-%m')"), $month)->sum('valor_total');
             $ginasio = Ginasio::where(DB::raw("DATE_FORMAT(data_evento, '%Y-%m')"), $month)->sum('pagamento');
             $campo = Campo::where(DB::raw("DATE_FORMAT(data_evento, '%Y-%m')"), $month)->sum('pagamento');
-
+    
             Receita::updateOrCreate(
                 ['mes' => $month],
                 [
@@ -46,18 +42,21 @@ class ReceitaController extends Controller
                 ]
             );
         }
-
-        $receitas = Receita::all();
-
+    
+        // Filtra receitas com base no mês selecionado
+        $receitas = Receita::when($month, function ($query, $month) {
+            return $query->where('mes', $month);
+        })->get();
+    
         // Calcula os totais
         $totalCasas = $receitas->sum('reserva');
         $totalGinasio = $receitas->sum('ginasio');
         $totalCampo = $receitas->sum('campo');
         $totalEntrada = $receitas->sum('total_entrada');
-
+    
         return view('receita.index', compact('receitas', 'totalCasas', 'totalGinasio', 'totalCampo', 'totalEntrada'));
     }
-
+    
 
 // ReceitaController.php
 public function edit($mes)

@@ -1,10 +1,6 @@
-
-
 <div class="container" style="margin-top: 10px;">
-    <!-- Cabeçalho do Formulário -->
     <h4 class="text-center mb-4">Registrar Evento</h4>
 
-    <!-- Formulário -->
     <form method="POST" action="{{ url('/campos') }}">
         @csrf
         <div class="form-group">
@@ -14,7 +10,7 @@
         
         <div class="form-group">
             <label for="inputInstitution" class="black-label font-weight-bold">Nome da Instituição</label>
-            <input type="text" class="form-control no-border" id="inputInstitution" name="nome_instituicao" style="background-color: white; color: black;" placeholder="Nome da Instituição" required>
+            <input type="text" class="form-control no-border" id="inputInstitution" name="nome_instituicao" placeholder="Nome da Instituição" required>
         </div>
         
         <div class="form-group">
@@ -29,16 +25,15 @@
         
         <div class="form-group">
             <label for="inputObservation" class="black-label font-weight-bold">Observação</label>
-            <input type="text" class="form-control no-border" id="inputObservation" name="observacao" style="background-color: white; color: black;" placeholder="Observação">
+            <input type="text" class="form-control no-border" id="inputObservation" name="observacao" placeholder="Observação">
         </div>
         
-        <div class="form-group form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" required>
-            <label class="form-check-label black-label font-weight-bold" for="gridCheck">
-                Concordo com os termos e condições
-            </label>
+        <div class="d-flex justify-content-between">
+            <!-- Botão Registrar -->
+            <button type="submit" class="btn btn-primary">Registrar Entrada</button>
+            
+            <!-- Botão Fechar personalizado -->
+            
         </div>
-
-        <button type="submit" class="btn btn-primary w-100">Registrar Entrada</button>
     </form>
 </div>

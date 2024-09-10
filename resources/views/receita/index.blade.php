@@ -5,17 +5,16 @@
     <div class="container">
         <h4 class="my-4">Receitas Mensais</h4>
 
-        <!-- Botão de filtro por mês -->
         <form method="GET" action="{{ route('receita.index') }}" class="mb-4">
-            <div class="form-row">
-                <div class="col-md-3">
-                    <input type="month" name="month" class="form-control no-border custom-date-input" value="{{ request('month') }}">
-                </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Filtrar por Mês</button>
-                </div>
-            </div>
-        </form>
+    <div class="form-row">
+        <div class="col-md-3">
+            <input type="month" name="month" class="form-control no-border custom-date-input" value="{{ request('month') }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Filtrar por Mês</button>
+        </div>
+    </div>
+</form>
 
         <div class="table-container">
             <div class="table-responsive">

@@ -93,7 +93,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createEventModalLabel">Novo Evento</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- Botão para fechar o modal -->
             </div>
             <div class="modal-body">
                 <!-- O conteúdo será carregado dinamicamente aqui -->
@@ -102,6 +102,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -124,6 +125,8 @@
 
 
 <script>
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var modal = new bootstrap.Modal(document.getElementById('createEventModal'));
 
@@ -164,4 +167,6 @@ function deleteCampo(id) {
     }
 }
 </script>
+
+
 @endsection

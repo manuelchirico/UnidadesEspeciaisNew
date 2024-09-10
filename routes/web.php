@@ -24,10 +24,15 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Grupo de rotas protegidas pelo middleware 'auth'
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [ WelcomeController::class, 'index'])->name('dashboard');
+  
 
     Route::get('/pessoas', [PessoaController::class, 'index'])->name('pessoas.index');
     Route::post('/pessoas', [PessoaController::class, 'store'])->name('pessoas.store');
     Route::delete('/pessoas/{id}', [PessoaController::class, 'destroy'])->name('pessoas.destroy');
+    Route::get('/pessoas/{id}/edit', [PessoaController::class, 'edit']);
+    Route::put('/pessoas/{id}', [PessoaController::class, 'update']);
+    
+
 
     // Rotas para os campos
     Route::get('/campos', [CampoController::class, 'index'])->name('campos.index');

@@ -41,4 +41,30 @@ class PessoaController extends Controller
 
         return redirect()->route('pessoas.index')->with('success', 'Pessoa deletada com sucesso');
     }
+
+    public function edit($id)
+    {
+        $pessoa = Pessoa::findOrFail($id);
+        return response()->json($pessoa);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nome' => 'required',
+            'email' => 'required|email',
+            'contacto' => 'required',
+            'tipo' => 'required',
+        ]);
+
+        $pessoa = Pessoa::findOrFail($id);
+        $pessoa->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'contacto' => $request->contacto,
+            'tipo' => $request->tipo,
+        ]);
+
+        return redirect()->route('pessoas.index')->with('success', 'Pessoa atualizada com sucesso');
+    }
 }

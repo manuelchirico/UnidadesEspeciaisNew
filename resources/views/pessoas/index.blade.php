@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="margin-top: 70px;">
     <div class="d-flex justify-content-between align-items-center">
-        <h4 class="my-4">Lista de Funcionarios</h4>
+        <h4 class="my-4">Lista de Funcionários</h4>
         <button class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
             <i class="fas fa-plus"></i> Novo Usuário
         </button>
@@ -28,10 +28,13 @@
                             <td>{{ $pessoa->contacto }}</td>
                             <td>{{ $pessoa->tipo }}</td>
                             <td>
+                                <button class="btn btn-warning btn-sm" onclick="loadEditModal({{ $pessoa->id }})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <form action="{{ route('pessoas.destroy', $pessoa->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i   class="fas fa-trash"></i</button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -84,10 +87,68 @@
         </div>
     </div>
 </div>
+
+<!-- Modal de Edição -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Usuário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="editNome">Nome</label>
+                        <input type="text" class="form-control" id="editNome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" class="form-control" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editContacto">Contacto</label>
+                        <input type="text" class="form-control" id="editContacto" name="contacto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTipo">Tipo</label>
+                        <select class="form-control" id="editTipo" name="tipo" required>
+                            <option value="admin">Admin</option>
+                            <option value="funcionario">Funcionario</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
 <script>
+    function loadEditModal(id) {
+        fetch(`{{ url('/pessoas') }}/${id}/edit`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('editNome').value = data.nome;
+                document.getElementById('editEmail').value = data.email;
+                document.getElementById('editContacto').value = data.contacto;
+                document.getElementById('editTipo').value = data.tipo;
+
+                const form = document.getElementById('editForm');
+                form.action = `{{ url('/pessoas') }}/${id}`;
+
+                $('#editModal').modal('show');
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
+
     $(document).ready(function() {
         @if(session('success'))
             alert('{{ session('success') }}');
