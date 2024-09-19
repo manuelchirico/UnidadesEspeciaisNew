@@ -60,11 +60,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/residencia/entradas/{id}', [ReservaController::class, 'update'])->name('residencia.entradas.update');
     Route::delete('/residencia/entradas/{id}', [ReservaController::class, 'destroy'])->name('residencia.entradas.destroy');
     Route::get('/residencia/saida', [ReservaController::class, 'pagas'])->name('residencia.saida.index');
-
+  
     // Rota para relatório
-    Route::get('/residencia/relatorio', [ReservaController::class, 'filtradas'])->name('residencia.relatorio.filtradas');
+    Route::get('/residencia/relatorio/filtradas', [ReservaController::class, 'filtradas'])->name('residencia.relatorio.filtradas');
     Route::get('/residencia/relatorio/pdf', [ReservaController::class, 'gerarPDF'])->name('residencia.relatorio.pdf');
-
+    
     // Rotas para receita
     Route::get('/receita', [ReceitaController::class, 'index'])->name('receita.index');
     Route::get('receita/edit/{mes}', [ReceitaController::class, 'edit'])->name('receitas.edit');

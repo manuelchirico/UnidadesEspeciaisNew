@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Set-2024 às 01:12
+-- Tempo de geração: 16-Set-2024 às 21:43
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -237,9 +237,9 @@ CREATE TABLE `pessoas` (
 --
 
 INSERT INTO `pessoas` (`id`, `nome`, `email`, `contacto`, `tipo`, `password`, `created_at`, `updated_at`) VALUES
-(2, 'hd', 'a@gmail.com', '63536', 'funcionario', '$2y$12$yHcUfDoUVHVYlmMUyD3sCeuTzSI/pwX0MctYfgM7CeOxA5TKYirNy', '2024-07-29 14:49:01', '2024-07-29 14:49:01'),
 (3, 'chirico', 'ah@gmail.com', '123', 'admin', '$2y$12$rDwmTOf.CKmUHc4rIT9DPO8JtFE5aC2SbpZMg5DjHMLFgaJgjjIQ.', '2024-07-29 14:58:06', '2024-07-29 14:58:06'),
-(4, 'hemidio', 'hemidio@gmail.com', '123', 'funcionario', '$2y$12$Zel7FfMxaMbqTjGz5klEm.wSOpiO6udNOxOdMnBoKygCeI.0N/vnW', '2024-07-29 19:11:09', '2024-07-29 19:11:09');
+(4, 'hemidio', 'hemidio@gmail.com', '123', 'admin', '$2y$12$Zel7FfMxaMbqTjGz5klEm.wSOpiO6udNOxOdMnBoKygCeI.0N/vnW', '2024-07-29 19:11:09', '2024-09-10 21:11:18'),
+(5, 'chirico', 'hemidio1@gmail.com', '63536', 'admin', '$2y$12$fe9E44..grRjet2myZNs9.8LNZDKFsLcSn03A8YK9jZabdRdg./f.', '2024-09-10 21:08:36', '2024-09-10 21:08:36');
 
 -- --------------------------------------------------------
 
@@ -264,7 +264,8 @@ CREATE TABLE `receitas` (
 --
 
 INSERT INTO `receitas` (`id`, `mes`, `reserva`, `ginasio`, `campo`, `created_at`, `updated_at`, `saidas`) VALUES
-(1, '2024-07', 25500.00, 550000.00, 0.00, '2024-07-23 15:48:41', '2024-07-29 22:16:07', 1200.00);
+(1, '2024-07', 25500.00, 100000.00, 0.00, '2024-07-23 15:48:41', '2024-09-16 18:39:57', 1200.00),
+(2, '2024-08', 0.00, 0.00, 3910.00, '2024-09-10 20:18:26', '2024-09-16 18:39:57', 0.00);
 
 -- --------------------------------------------------------
 
@@ -314,18 +315,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('3Lv0KeL7FMf79KZQXAe1C6GT4x5sqjGTux6fXAlY', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQUo0OHdGY3oyc1V6YUpqZnBRbExkb3VLTExFazhuRlpTQVdLSkxRRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1723111829),
-('44kpD7g62rcv6gyyXKYhSJ0qL5B9Do2K6s8bJvN2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRWRwYVZxRm44aFhLOUJSV05Qc2FIY3M0QXVibkV5Q2RraXFITU4yUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1723111830),
-('dOctF098KqNHSkLfeMzx4DjRpOVi8lqElZ5II3r2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiekxMQ3pETmFkRmFVUXpWeDBnNDZOS1dkeEVvTGFPVUtTaU92QncwNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1725566093),
-('jnxNvcLqcU7Mx9KeHp0MyqnZYkEvxpfQ3nAqKd6w', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMEVNNmRGclZ1WGhERHFHdU95eUlNZHNFMnp4M2JrUm1IRVlXQVdLYSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1722800751),
-('konupsdsybDaQ8TV2VXTypigujaL3Ap1VKPi91K0', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUnl6UXVMWVdzbFp5V0lPWml3cVVpdjlrZHp3aVU5YVNYMURRRWlEYiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1723228109),
-('LxON77Uqxl83dVN5JQZu6W20lb7fW1NnAj24zIko', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoicm1JR3dEaHBWUnZkcmRINHNYSXFIT3lFR0NYVG1KVzJkUE1BR0JPUCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWNlaXRhL2VkaXQvMjAyNC0wNyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7fQ==', 1722294979),
-('maoRh95ESiP75aRSIpF7v0mpEb6MTIkgMOYBwd0L', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRXR1TDE3SlhrcURua1hWTTVKWnBoZUt6RTl2QmhLTXM4MGRzRHBuRCI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2NhbXBvcy9wZGYiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2NhbXBvcy9wZGYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1723111829),
-('oEn0eIZA6AkQEr5wXm52Unk5L6EcJem95sUAbiB0', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibE1IN3hDRXJ0OGU1WXVNd2Q2R1d4WGNrbmxkTmZ5Q0NScm9ING1lRyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMyOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvY2FtcG9zL3BkZiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7fQ==', 1723111994),
-('PMzxp58DFES87P2z7YwDMpKd9qlZSbZTzJMS2bEZ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiS3plY1hJcWVKYVQ3N0llY2NUZXRtc1FBR2pUb2JQb29VSzJBMGhSVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1723111826),
-('ufv757MB8GGGo1h0TIW0R2xU9QEdXvftXGc010Hi', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSDdaU1cyUmN6ZEdnaDJnWkpLQjhBMUhaVUZUSUE1TENBdHRxNWh5SSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2NhbXBvcy9wZGYiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2NhbXBvcy9wZGYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1723111826),
-('Wgy39fgGCuph1GkLktrIsyJT0rEpp3Q3zTK7Qxdw', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaTg4YktEQ01DUFNBNFlhOGtTSExqcnFsS0g5N0ZJbVFLb0txY2NscyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2NhbXBvcy9wZGYiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2NhbXBvcy9wZGYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1723111829),
-('wIloKTuZp3LQI1RGhl9O4GjUIbgLr14r2kpL9UXH', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOXNXek94WUhWWTlYSTVqUDdhWjFJeGs1Z1J5NFR6ajdHS2JFR3FNYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYW1wb3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1725571347);
+('1rJbUAV1YsucByAfr1165lhzTyOlkQscPEb70KZy', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSTZuUnE2aFJRRnFiUHNnajdsaW1OUWFZM0ZTc1ZLWGdIbTJlNzJhaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWNlaXRhP21vbnRoPTIwMjQtMDUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo1O30=', 1726515597),
+('I3OvEM6Ej0nc2iqYm9d2tKiCgVlEqqQEuwxOOkb8', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWlZoN2ZldkJzTTliVjhBTEN1VEVDakxONXhTUk9mYVdlQWFveHRvbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZXNpZGVuY2lhL2VudHJhZGFzL2NyZWF0ZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7fQ==', 1726011355);
 
 -- --------------------------------------------------------
 
@@ -522,13 +513,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de tabela `pessoas`
 --
 ALTER TABLE `pessoas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `receitas`
 --
 ALTER TABLE `receitas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `reservas`

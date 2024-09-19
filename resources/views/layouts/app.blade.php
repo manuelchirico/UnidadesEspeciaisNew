@@ -93,7 +93,8 @@
             <h6 class="collapse-header">Residencias:</h6>
             <a class="collapse-item" href=" {{ route('residencia.entradas.list') }}">Entradas </a>
             <a class="collapse-item" href="{{ route('residencia.saida.index') }}">Saídas</a>
-            <a class="collapse-item" href="#">Relatórios</a>
+            
+            <a class="collapse-item" href="{{ route('residencia.relatorio.filtradas') }}">Relatórios</a>
         </div>
     </div>
 </li>
@@ -135,14 +136,6 @@
 @endif
 
 <!-- Nav Item - Relatórios -->
-@if(Auth::user()->tipo === 'admin')
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-file-alt"></i> 
-            <span>Relatórios</span>
-        </a>
-    </li>
-@endif
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

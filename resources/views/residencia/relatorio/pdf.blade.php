@@ -23,9 +23,9 @@
 </head>
 <body>
     <div class="header">
-        <h1>Universidadde licungo-extensão Beira </h1>
-        <h1>Departamento de Unidade Especiais</h1>
-        <h2>Relatório de Reservas</h2>
+        <h2>Universidadde licungo-extensão Beira </h2>
+        <h2>Departamento de Unidade Especiais</h2>
+        <h3>Relatório de Reservas</h3>
     </div>
 
 <table>
@@ -59,8 +59,8 @@
     </tbody>
 </table>
 <div class="footer" style="text-align: center; margin-top: 40px;">
-    <p>Beira, aos {{ date('d') }} de {{ date('F') }} de {{ date('Y') }}
-    Impresso às {{ date('H:i') }}</p>
+    <p>Beira, aos {{ date('d') }} de {{ date('F') }} de {{ date('Y') }} <h5>
+    Impresso às {{ date('H:i') }} </h5></p>
 </div>
 </body>
 </html>

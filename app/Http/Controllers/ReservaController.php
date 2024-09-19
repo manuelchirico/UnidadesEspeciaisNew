@@ -81,8 +81,11 @@ class ReservaController extends Controller
       
 
     }
-
-
+    public function indexRelatorio()
+    {
+        return view('residencia.relatorio.index');
+    }
+    
 
     public function edit($id)
     {
